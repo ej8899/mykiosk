@@ -2,12 +2,41 @@
  * v0 by Vercel.
  * @see https://v0.dev/t/JbhHOduwgo5
  */
+
+import { useState, useEffect } from 'react';
+import { getCurrentTime, formatTime, getTimeZoneAbbr } from '../helpers';
+
 export default function Component() {
+  const [currentTime, setCurrentTime] = useState(getCurrentTime());
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const hours = currentTime.getHours();
+  const minutes = currentTime.getMinutes();
+  const seconds = currentTime.getSeconds();
+
+  const timeZoneAbbr = getTimeZoneAbbr(timeZone);
+  const formattedTime = formatTime(currentTime);
+
+  // const formattedTime = (value) => (value < 10 ? `0${value}` : value);
+
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-75">
       <div className="text-center">
-        <h1 className="text-9xl font-bold">10:45 PM</h1>
-        <p className="text-2xl">New York, USA</p>
+
+
+        <div className="clock text-9xl font-bold">
+        {formattedTime}
+        </div>
+
+        <p className="text-2xl mt-4">{timeZoneAbbr}</p>
       </div>
     </div>
   )
