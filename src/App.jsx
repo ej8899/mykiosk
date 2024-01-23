@@ -13,7 +13,7 @@ import './App.css'
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const forcedPage = 2;
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
@@ -22,6 +22,7 @@ const App = () => {
   const getRandomSecondaryPage = () => {
     return secondaryPages[Math.floor(Math.random() * secondaryPages.length)];
   };
+  
   
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -44,27 +45,44 @@ const App = () => {
     const primaryIntervalId = setInterval(() => {
       setCurrentPage(getRandomSecondaryPage()); // Switch to a random secondary page after primaryPageDuration
     }, primaryPageDuration);
-
     // Clear the interval when the component is unmounted
     return () => clearInterval(primaryIntervalId);
   }, []);
-
+  
   
   const renderPage = () => {
-    switch (currentPage) {
-      case 1:
-        return <Page1 />;
-      case 2:
-        return <Page2 />;
-      case 3:
-        return <Page3 />;
-      case 4:
-        return <Page4 />;
-      case 5:
-        return <Page5 />;
-      
-      default:
-        return null;
+    if (forcedPage > 0){
+      switch (forcedPage) {
+        case 1:
+          return <Page1 />;
+        case 2:
+          return <Page2 />;
+        case 3:
+          return <Page3 />;
+        case 4:
+          return <Page4 />;
+        case 5:
+          return <Page5 />;
+
+        default:
+          return null;
+      }
+    } else {
+      switch (currentPage) {
+        case 1:
+          return <Page1 />;
+        case 2:
+          return <Page2 />;
+        case 3:
+          return <Page3 />;
+        case 4:
+          return <Page4 />;
+        case 5:
+          return <Page5 />;
+
+        default:
+          return null;
+      }
     }
   };
 
