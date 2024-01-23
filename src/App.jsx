@@ -13,7 +13,7 @@ import './App.css'
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 5; // Update the total number of pages (numbering starts at 1)
+
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
@@ -38,7 +38,7 @@ const App = () => {
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
-  }, []); // Empty dependency array to run only once on mount
+  }, []);
 
   useEffect(() => {
     const primaryIntervalId = setInterval(() => {
@@ -47,7 +47,7 @@ const App = () => {
 
     // Clear the interval when the component is unmounted
     return () => clearInterval(primaryIntervalId);
-  }, []); // Empty dependency array to run only once on mount
+  }, []);
 
   
   const renderPage = () => {
