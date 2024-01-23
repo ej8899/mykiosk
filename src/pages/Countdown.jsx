@@ -33,14 +33,19 @@ const Countdown = () => {
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-75">
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-white">Event Name</h1>
-        <p className="text-lg text-gray-300 mt-4">The event starts in:</p>
-        <div className="flex items-center justify-center mt-8">
-          <div className="text-6xl font-bold text-white mx-4">{timeLeft.days.toString().padStart(2, '0')}days</div>
-          <div></div>
-          <div className="text-6xl font-bold text-white mx-4">{timeLeft.hours.toString().padStart(2, '0')}h</div>
+        <h1 className="text-6xl font-bold text-white">Event Name</h1>
+        
+        <div className="flex flex-col items-center justify-center mt-8">
           
-          <div className="text-6xl font-bold text-white mx-4">{timeLeft.minutes.toString().padStart(2, '0')}m</div>
+          <div className="flex justify-center items-end pb-4">
+            <span className="text-9xl font-extrabold text-white inline-block w-40 pb-6 z-10">{timeLeft.days.toString().padStart(2, '0')}</span>
+            <span className="text-6xl font-bold text-gray-400 ml-8 mt-16">DAYS</span>
+          </div>
+
+          <div className='flex flex-row'>
+            <div className="text-6xl font-bold text-white mx-4">{timeLeft.hours.toString().padStart(2, '0')}h</div>          
+            <div className="text-6xl font-bold text-white mx-4">{timeLeft.minutes.toString().padStart(2, '0')}m</div>
+          </div>
         </div>
       </div>
     </div>
