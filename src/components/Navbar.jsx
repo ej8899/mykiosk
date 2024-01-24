@@ -31,8 +31,8 @@ const TitleBar = () => {
       </div>
 
       <div className='flex flex-col text-right'>
-        <div className="text-6xl">{formattedTime}</div>
-        <div className="text-5xl mr-2">{formattedDate}</div>
+        <div className="text-6xl font-extrabold">{formattedTime}</div>
+        <div className="text-5xl font-thin">{formattedDate}</div>
       </div>
 
     </div>

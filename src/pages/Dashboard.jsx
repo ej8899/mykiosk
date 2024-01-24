@@ -1,6 +1,7 @@
 
 
 import NavBar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 import { Card } from 'flowbite-react';
 import { Carousel } from 'flowbite-react';
@@ -9,13 +10,13 @@ const Dashboard = () => {
 
 
   return (
-    <div className="h-screen w-screen bg-black bg-opacity-15">
+    <div className="flex flex-col h-screen w-screen bg-black bg-opacity-15 min-h-screen">
       <NavBar />
-      <div className="dark flex flex-row items-center justify-center mr-8 ml-8 ">
+      <div className="dark flex flex-row flex-grow  mr-8 ml-8 mt-4">
         
           <div className="flex flex-col gap-4 w-full">
-            <div className="flex flex-col gap-4 mr-4 mt-4">
-              <h1 className="text-4xl font-bold text-white">Upcoming Milestones...</h1>
+          <h1 className="text-4xl font-bold text-white">Upcoming Milestones...</h1>
+            <div className="flex flex-col gap-4 mr-4">
               <Card className="border-l-8 dark:border-blue-500 dark:bg-opacity-40">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold text-white">Event 11</h2>
@@ -37,29 +38,31 @@ const Dashboard = () => {
             </div>
           </div>
 
-          <div className="h-56 sm:h-64 xl:h-80 2xl:h-96 w-full ml-4">
-            <h1 className="text-4xl font-bold text-white">Happening on Site...</h1>
-          <Carousel leftControl="&nbsp;" rightControl="&nbsp;" className="w-full mb-4 mt-4"  slideInterval={3000}>
+          
+          <div className="carousel h-256 sm:h-264 xl:h-280 2xl:h-full w-full ml-4 mt-0">
+            <h1 className="text-4xl font-bold text-white mt-0">Happening on Site...</h1>
+          <Carousel leftControl="&nbsp;" rightControl="&nbsp;" className="w-full mb-4 mt-4 rounded-xl dark:border-blue-500 border-2"  slideInterval={9000}>
             
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-              Slide 1
+              <img src="http://www.tcmd.com/lhl/final5.jpg"></img>
             </div>
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-              Slide 2
+              <img src="http://www.tcmd.com/lhl/final6.jpg"></img>
             </div>
             <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-              Slide 3
+              <img src="http://www.tcmd.com/lhl/final7.jpg"></img>
             </div>
           </Carousel>
-          address | Weather (temp & icon)
         </div>
-
         
       </div>
-    
+      <Footer/>
     </div>
     
   );
 };
 
 export default Dashboard;
+
+
+

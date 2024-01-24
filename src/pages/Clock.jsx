@@ -18,25 +18,22 @@ export default function Component() {
     return () => clearInterval(intervalId);
   }, []);
 
-  const hours = currentTime.getHours();
-  const minutes = currentTime.getMinutes();
-  const seconds = currentTime.getSeconds();
-
   const timeZoneAbbr = getTimeZoneAbbr(timeZone);
-  const formattedTime = formatTime(currentTime);
+  // const formattedTime = formatTime(currentTime);
+  const formattedTime = currentTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
 
   // const formattedTime = (value) => (value < 10 ? `0${value}` : value);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
       <div className="text-center">
 
 
-        <div className="clock text-9xl font-bold">
+        <div className="clock text-9xl text-white font-bold">
         {formattedTime}
         </div>
 
-        <p className="text-2xl mt-4">{timeZoneAbbr}</p>
+        <p className="text-6xl font-bold text-white mt-4">{timeZoneAbbr}</p>
       </div>
     </div>
   )

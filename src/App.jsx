@@ -15,7 +15,7 @@ import './App.css'
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = 1;
+  const forcedPage = 5;  // set to 0 for rotation
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
@@ -89,10 +89,11 @@ const App = () => {
   };
 
   return (
-    <div className="kiosk-app overflow-hidden overflow-y-hidden">
+    <div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
       <ImageRotator />
-      {renderPage()}
-      
+      <div className="flex-grow">
+        {renderPage()}
+      </div>
     </div>
   );
 };
