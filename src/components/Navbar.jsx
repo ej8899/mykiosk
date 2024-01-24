@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 const TitleBar = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -12,25 +12,25 @@ const TitleBar = () => {
   }, []);
 
   const formattedDate = currentDateTime.toLocaleDateString();
-  const formattedTime = currentDateTime.toLocaleTimeString();
+  const formattedTime = currentDateTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
+
 
   return (
-    <div className="bg-gray-800 text-white h-16 flex items-center justify-between px-4">
+    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-35">
       
       <div className="flex items-center">
-  <img src="YourCompanyLogo" alt="Company Logo" className="h-8 w-8 mr-2" />
-  <div>
-    Welcome to <br />
-    <span className="text-lg font-semibold">Your Company Name</span>
-  </div>
-</div>
-
-
+        <img src="YourCompanyLogo" alt="Company Logo" className="h-8 w-8 mr-2" />
+        <div className="text-6xl">
+          Welcome to <br />
+          <span className="text-7xl font-semibold">Your Company Name</span>
+        </div>
+      </div>
 
       <div>
-        <div className="text-sm mr-2">{formattedDate}</div>
-        <div className="text-sm">{formattedTime}</div>
+        <div className="text-5xl mr-2">{formattedDate}</div>
+        <div className="text-6xl">{formattedTime}</div>
       </div>
+
     </div>
   );
 };

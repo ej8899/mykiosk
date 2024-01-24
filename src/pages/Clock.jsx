@@ -28,7 +28,7 @@ export default function Component() {
   // const formattedTime = (value) => (value < 10 ? `0${value}` : value);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-75">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
       <div className="text-center">
 
 

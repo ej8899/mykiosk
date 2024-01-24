@@ -6,6 +6,8 @@ import Page3 from './pages/Weather';
 import Page4 from './pages/Clock';
 import Page5 from './pages/Photo';
 
+import ImageRotator from './components/ImageRotator.jsx';
+
 import './config.js';
 
 import './App.css'
@@ -88,7 +90,9 @@ const App = () => {
 
   return (
     <div className="kiosk-app overflow-hidden overflow-y-hidden">
+      <ImageRotator />
       {renderPage()}
+      
     </div>
   );
 };

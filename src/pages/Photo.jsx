@@ -5,7 +5,7 @@
 
 export default function Component() {
   return (
-    <div className="dark flex items-center justify-center h-screen w-screen bg-black bg-opacity-75">
+    <div className="dark flex items-center justify-center h-screen w-screen bg-black bg-opacity-15">
       <img
         alt="Full Screen Image"
         className="object-cover rounded-lg"

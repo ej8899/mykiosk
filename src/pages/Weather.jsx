@@ -4,7 +4,7 @@
  */
 export default function WeatherPage() {
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-75">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
        
       <h1 className="text-6xl font-bold text-white">Weather App</h1>
       <div className="mt-10 flex flex-col items-center justify-center space-y-4">

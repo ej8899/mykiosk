@@ -31,7 +31,7 @@ const Countdown = () => {
   }, [timeLeft]);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-75">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
       <div className="text-center">
         <h1 className="text-6xl font-bold text-white">Event Name</h1>
         
