@@ -11,7 +11,11 @@ const TitleBar = () => {
     return () => clearInterval(intervalId);
   }, []);
 
-  const formattedDate = currentDateTime.toLocaleDateString();
+  const formattedDate = currentDateTime.toLocaleDateString(undefined, {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  });
   const formattedTime = currentDateTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
 
 
@@ -26,9 +30,9 @@ const TitleBar = () => {
         </div>
       </div>
 
-      <div>
-        <div className="text-5xl mr-2">{formattedDate}</div>
+      <div className='flex flex-col text-right'>
         <div className="text-6xl">{formattedTime}</div>
+        <div className="text-5xl mr-2">{formattedDate}</div>
       </div>
 
     </div>
