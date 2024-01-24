@@ -13,7 +13,7 @@ import './App.css'
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = 2;
+  const forcedPage = 1;
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
