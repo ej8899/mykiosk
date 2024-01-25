@@ -26,15 +26,18 @@ export default function Component() {
 
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
-      <div className="text-center">
+      <div className="flex flex-col justify-center  text-center">
 
-
-        <div className="clock text-9xl text-white font-bold">
-        {formattedTime}
+        <div className="clock text-9xl text-white font-bold mb-0 p-0">
+          {formattedTime}
         </div>
 
-        <p className="text-6xl font-bold text-white mt-4">{timeZoneAbbr}</p>
-      </div>
+        <div className="text-6xl font-bold text-blue-300 mt-0 p-0 flex-grow text-right">
+          {timeZoneAbbr}
+        </div>
+
+        </div>
+
     </div>
   )
 }
