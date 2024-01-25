@@ -1,3 +1,19 @@
 .carousel {
   height: 500px;
 }
+
+.outlined-text {
+  -webkit-text-stroke-width: 1px; /* Set the width of the outline */
+  -webkit-text-stroke-color: #000; /* Set the color of the outline */
+  color: #fff; /* Set the main text color */
+}
+
+.debug-yellow {
+  border: 2px solid yellow;
+}
+.debug-red {
+  border: 2px solid red;
+}
+.debug-blue {
+  border: 2px solid blue;
+}
