@@ -3,15 +3,25 @@
 //
 
 
-// TASK:
-// add this to index.js
-// import './config.js';
-
-const globalconfig = {
-  // application details:
+export const globalconfig = {
   appVersion: "1.0",
   appDeveloper: "Ernie Johnson",
-  appName: "erniejohnson.ca - Kiosk APp",
+  appName: "CompanyKiosk",
+
+  events: [
+    { date: '2024-12-31T00:00:00',
+      title: 'event 01',
+      details: 'this is event 1'
+    },
+    { date: '2024-07-12T00:00:00',
+      title: 'event 02',
+      details: 'this is event 2'
+    },
+    { date: '2024-05-02T00:00:00',
+      title: 'event 03',
+      details: 'this is event 3'
+    },
+  ],
 
   // debug mode true or false
   // usage is:  if (global.config.debug) console.log("debugging info here"); // or of course, other options for debug purposes
@@ -40,12 +50,6 @@ const globalconfig = {
   },
 };
 
-/*
-Setup for a global function like this:
 
-const isFalsey = (value) => !value;
-global.isFalsey = isFalsey;
 
-*/
-
-export default globalconfig;
+// export default globalconfig;
