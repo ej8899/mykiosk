@@ -1,8 +1,29 @@
 import { useState, useEffect } from 'react';
 
+import { globalconfig } from '../config.js'
+
+const findClosestEvent = () => {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate comparison
+
+  const upcomingEvents = globalconfig.events.filter(event => new Date(event.date) >= today);
+  
+  if (upcomingEvents.length === 0) {
+    // No upcoming events
+    return null;
+  }
+
+  upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  return upcomingEvents[0];
+};
+
+
 const Countdown = () => {
+
+  const closestEvent = findClosestEvent();
   // Set your event date in the format: 'YYYY-MM-DDTHH:mm:ss'
-  const eventDate = new Date('2024-12-31T00:00:00');
+  const eventDate = new Date(closestEvent.date);
 
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -31,9 +52,9 @@ const Countdown = () => {
   }, [timeLeft]);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-white">Event Name</h1>
+        <h1 className="text-6xl font-bold text-white border-b-8 border-blue-500">{closestEvent.title}</h1>
         
         <div className="flex flex-col items-center justify-center mt-8">
           
