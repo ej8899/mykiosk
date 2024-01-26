@@ -1,31 +1,23 @@
 import { useState, useEffect } from 'react';
-
-import { globalconfig } from '../config.js'
-
-const findClosestEvent = () => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); // Set hours, minutes, seconds, and milliseconds to 0 for accurate comparison
-
-  const upcomingEvents = globalconfig.events.filter(event => new Date(event.date) >= today);
-  
-  if (upcomingEvents.length === 0) {
-    // No upcoming events
-    return null;
-  }
-
-  upcomingEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-  return upcomingEvents[0];
-};
-
+import { globalconfig } from '../config.js';
 
 const Countdown = () => {
+  const getRandomEvent = () => {
+    const upcomingEvents = globalconfig.events.filter(event => new Date(event.date) >= new Date());
 
-  const closestEvent = findClosestEvent();
-  // Set your event date in the format: 'YYYY-MM-DDTHH:mm:ss'
-  const eventDate = new Date(closestEvent.date);
+    if (upcomingEvents.length === 0) {
+      return null;
+    }
 
-  const calculateTimeLeft = () => {
+    const randomIndex = Math.floor(Math.random() * upcomingEvents.length);
+    return upcomingEvents[randomIndex];
+  };
+
+  const [randomEvent, setRandomEvent] = useState(getRandomEvent());
+  const eventDate = new Date(randomEvent.date);
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+
+  function calculateTimeLeft() {
     const now = new Date();
     const difference = eventDate - now;
 
@@ -39,9 +31,7 @@ const Countdown = () => {
     } else {
       return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     }
-  };
-
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -49,12 +39,12 @@ const Countdown = () => {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [timeLeft]);
+  }, [timeLeft, randomEvent]); // Added randomEvent as a dependency
 
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
       <div className="text-center">
-        <h1 className="text-6xl font-bold text-white border-b-8 border-blue-500">{closestEvent.title}</h1>
+        <h1 className="text-6xl font-bold text-white border-b-8 border-blue-500">{randomEvent.title}</h1>
         
         <div className="flex flex-col items-center justify-center mt-8">
           
