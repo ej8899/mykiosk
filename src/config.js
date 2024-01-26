@@ -19,7 +19,23 @@ export const globalconfig = {
     },
     { date: '2024-05-02T00:00:00',
       title: 'event 03',
-      details: 'this is event 3'
+      details: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.'
+    },
+    { date: '2024-01-02T00:00:00',
+      title: 'event is expired',
+      details: 'this is event 4 but expired'
+    },
+    { date: '2024-01-27T12:00:00',
+      title: 'event is tomorrow',
+      details: 'this is event 5 but tomorrow'
+    },
+    { date: '2024-01-26T12:00:00',
+      title: 'event is today',
+      details: 'this is event 6 but today'
+    },
+    { date: '2026-01-26T12:00:00',
+      title: 'event is long time away',
+      details: 'this event occurs in quite a while'
     },
   ],
 
