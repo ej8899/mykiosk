@@ -20,7 +20,7 @@ const TitleBar = () => {
 
 
   return (
-    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-35">
+    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85">
       
       <div className="flex items-center">
         <img src="YourCompanyLogo" alt="Company Logo" className="h-8 w-8 mr-2" />

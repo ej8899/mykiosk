@@ -26,9 +26,9 @@ export default function Component() {
 
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
-      <div className="flex flex-col justify-center  text-center">
+      <div className="flex flex-col justify-center  text-center ">
 
-        <div className="clock text-9xl text-white font-bold mb-0 p-0">
+        <div className="clock text-9xl text-white font-bold mb-0 p-0 custom-time-container">
           {formattedTime}
         </div>
 
