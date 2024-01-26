@@ -4,19 +4,20 @@
  */
 export default function WeatherPage() {
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-15">
-       
-      <h1 className="text-6xl font-bold text-white">Weather App</h1>
-      <div className="mt-10 flex flex-col items-center justify-center space-y-4">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
+      <div className="mt-10 flex flex-col items-center justify-center space-y-4 w-2/5 fixed bottom-0 right-0 p-16 ">
+      <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 w-full rounded-xl p-4">
         <div className="flex flex-col items-center space-y-2">
-          <h2 className="text-4xl font-bold text-white">Windsor, ON</h2>
-          <p className="text-2xl text-white">22°C / Clear</p>
+          <h1 className="text-4xl font-bold text-white">Windsor, ON</h1>
+          <h2 className="text-6xl font-bold text-white">22°C</h2>
+          <h2 className="text-6xl font-bold text-white">Clear</h2>
         </div>
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 items-center justify-center">
           <SunIcon className="h-16 w-16 text-yellow-500" />
           <CloudIcon className="h-16 w-16 text-gray-300" />
           <CloudRainIcon className="h-16 w-16 text-blue-500" />
         </div>
+      </div>
       </div>
     </div>
   )

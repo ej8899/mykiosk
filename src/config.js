@@ -11,7 +11,7 @@ export const globalconfig = {
   events: [
     { date: '2024-12-31T00:00:00',
       title: 'event 01',
-      details: 'this is event 1'
+      details: 'this is event 1',
     },
     { date: '2024-07-12T00:00:00',
       title: 'event 02',
@@ -29,7 +29,7 @@ export const globalconfig = {
       title: 'event is tomorrow',
       details: 'this is event 5 but tomorrow'
     },
-    { date: '2024-01-26T12:00:00',
+    { date: '2024-01-26T16:00:00',
       title: 'event is today',
       details: 'this is event 6 but today'
     },
