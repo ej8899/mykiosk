@@ -15,7 +15,7 @@ import './App.css'
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = 0;  // set to 0 for rotation
+  const forcedPage = 1;  // set to 0 for rotation
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5];
   const secondaryPageDuration = 30 * 1000; // 30 seconds

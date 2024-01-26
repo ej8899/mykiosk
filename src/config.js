@@ -8,6 +8,12 @@ export const globalconfig = {
   appDeveloper: "Ernie Johnson",
   appName: "CompanyKiosk",
 
+  // first item is 'sticky' on the dashboard.  Basic HTML is allowed (it is DIV wrapped)
+  announcements: [
+    "#1 <big>Lorem</big>, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.",
+    "#2 <b>Lorem</b>, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem."
+  ],
+
   events: [
     { date: '2024-12-31T00:00:00',
       title: 'event 01',
@@ -19,7 +25,7 @@ export const globalconfig = {
     },
     { date: '2024-05-02T00:00:00',
       title: 'event 03',
-      details: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.'
+      details: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore minima dolorum ipsa esse quae aperiam id vel. Sapiente repellendus sunt tempore ratione tempora id, animi sequi incidunt, debitis, culpa rem.'
     },
     { date: '2024-01-02T00:00:00',
       title: 'event is expired',
