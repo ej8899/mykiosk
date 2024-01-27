@@ -5,6 +5,7 @@ import Page2 from './pages/Countdown.jsx';
 import Page3 from './pages/Weather';
 import Page4 from './pages/Clock';
 import Page5 from './pages/Photo';
+import Page6 from './pages/Announcements';
 
 import ImageRotator from './components/ImageRotator.jsx';
 
@@ -17,7 +18,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const forcedPage = 1;  // set to 0 for rotation
   const primaryPage = 1;
-  const secondaryPages = [2, 3, 4, 5];
+  const secondaryPages = [2, 3, 4, 5, 6];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
   const primaryPageDuration = 1 * 60 * 1000; // 1 minutes
 
@@ -38,7 +39,6 @@ const App = () => {
       });
     }, secondaryPageDuration); // Switch back to the primary page after secondaryPageDuration
 
-    // Clear the interval when the component is unmounted
     return () => clearInterval(intervalId);
   }, []);
 
@@ -64,6 +64,8 @@ const App = () => {
           return <Page4 />;
         case 5:
           return <Page5 />;
+        case 6:
+          return <Page6 />;
 
         default:
           return null;
@@ -80,7 +82,8 @@ const App = () => {
           return <Page4 />;
         case 5:
           return <Page5 />;
-
+        case 6:
+          return <Page6 />;
         default:
           return null;
       }

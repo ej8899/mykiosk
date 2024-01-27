@@ -11,39 +11,36 @@ import { globalconfig } from '../config.js'
 function formatEventDate(eventDate) {
   const today = new Date();
   const targetDate = new Date(eventDate);
-  
-  // Calculate the difference in milliseconds
+
   const difference = targetDate - today;
-  let formattedDate, result;
 
-  // Calculate the difference in days
-  const daysRemaining = Math.floor(difference / (1000 * 60 * 60 * 24));
-  
-  if (daysRemaining < 0) {
-    result = `Event has passed`;
-  } else if (daysRemaining === 0) {
-    const hoursRemaining = Math.floor(difference / (1000 * 60 * 60));
-    if (hoursRemaining < 1) {
-      result = "Now";
-    } else {
-      result = `Hours Remaining: ${hoursRemaining}`;
-    }
+  if (difference < 0) {
+    return 'Event has passed';
+  } else if (difference === 0) {
+    return 'Now';
   } else {
-    result = `Days Remaining: ${daysRemaining}`;
-  }
+    const daysRemaining = Math.floor(difference / (1000 * 60 * 60 * 24));
 
-  return result;
+    if (daysRemaining === 0) {
+      const hoursRemaining = Math.floor(difference / (1000 * 60 * 60));
+      return `Hours Remaining: ${hoursRemaining}`;
+    } else {
+      return `Days Remaining: ${daysRemaining}`;
+    }
+  }
 }
+
 
 const Dashboard = () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   const upcomingEvents = globalconfig.events
-    .filter(event => new Date(event.date) >= today)
+    .filter((event) => new Date(event.date) >= today)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const firstAnnouncement = globalconfig.announcements[0];
+
 
   return (
     <div className="flex flex-col h-screen w-screen bg-black bg-opacity-15 min-h-screen">
@@ -53,7 +50,7 @@ const Dashboard = () => {
           <div className="flex flex-col gap-4 w-full">
           <h1 className="text-4xl font-bold text-blue-400 uppercase">Upcoming Events...</h1>
             <div className="flex flex-col gap-6 mr-4">
-            {upcomingEvents.map((event, index) => (
+            {upcomingEvents.slice(1).map((event, index) => (
               <Card key={index} className="border-0 border-l-8 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold text-white">{event.title}</h2>
