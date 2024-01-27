@@ -81,10 +81,10 @@ const Countdown = () => {
 
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
-      <div className="text-center w-2/5 fixed bottom-0 right-0 p-16">
+      <div className="text-center w-3/5 fixed bottom-0 right-0 p-16">
         {closestEvent && (
           <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 w-full rounded-xl p-4 ">
-            <h1 className="text-6xl font-bold text-white border-b-8 border-blue-500">{closestEvent.title}</h1>
+            <h1 className="text-5xl font-thin text-white border-b-8 border-blue-500">{closestEvent.title}</h1>
 
             <div className="flex flex-col items-center justify-center mt-8">
               <div className="flex justify-center items-end pb-4">
