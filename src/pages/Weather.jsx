@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/P9xOHEF3ENZ
  */
-export default function WeatherPage() {
+export default function WeatherPage({weatherData}) {
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
       <div className="mt-10 flex flex-col items-center justify-center space-y-4 w-2/5 fixed bottom-0 right-0 p-16 ">
@@ -10,16 +11,17 @@ export default function WeatherPage() {
       <div className="flex space-x-4 items-center justify-center">
         <div className="text-6xl font-thin text-white">Windsor, ON</div>
       </div>
-      <div className="flex space-x-4 items-center justify-center">
-          <SunIcon className="h-16 w-16 text-yellow-500" />
-          <div className="text-6xl font-bold text-white">22°C</div>
+      <div className="flex space-x-4 items-center justify-center -m-6 p-0">
+          {/* <SunIcon className="h-16 w-16 text-yellow-500" /> */}
+          <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-32 h-32" />
+          <div className="text-7xl font-bold text-white m-0 p-0">{weatherData.temp_c}°C</div>
         </div>
-        <div className="flex space-x-4 items-center justify-center">          
-          <div className="text-6xl font-bold text-white">Clear</div>
-          <SunIcon className="h-16 w-16 text-yellow-500" />
+        <div className="flex space-x-4 items-center justify-center">
+          <div className="text-6xl font-bold text-white">{weatherData.condition.text}</div>
+          
+          {/* <SunIcon className="h-16 w-16 text-yellow-500" />
           <CloudIcon className="h-16 w-16 text-gray-300" />
-          <CloudRainIcon className="h-16 w-16 text-blue-500" />
-          22°C
+          <CloudRainIcon className="h-16 w-16 text-blue-500" /> */}
         </div>
       </div>
       </div>

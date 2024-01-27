@@ -31,11 +31,12 @@ function formatEventDate(eventDate) {
 }
 
 
-const Dashboard = () => {
+const Dashboard = ({weatherData}) => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const upcomingEvents = globalconfig.events
+  
+    const upcomingEvents = globalconfig.events
     .filter((event) => new Date(event.date) >= today)
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
@@ -50,7 +51,7 @@ const Dashboard = () => {
           <div className="flex flex-col gap-4 w-full">
           <h1 className="text-4xl font-bold text-blue-400 uppercase">Upcoming Events...</h1>
             <div className="flex flex-col gap-6 mr-4">
-            {upcomingEvents.slice(1).map((event, index) => (
+            {upcomingEvents.map((event, index) => (
               <Card key={index} className="border-0 border-l-8 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold text-white">{event.title}</h2>
@@ -85,7 +86,7 @@ const Dashboard = () => {
         </div>
         
       </div>
-      <Footer/>
+      <Footer weatherData={weatherData}/>
     </div>
     
   );
