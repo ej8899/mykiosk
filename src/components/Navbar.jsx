@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { globalconfig } from '../config.js';
 
 const TitleBar = () => {
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
@@ -23,10 +24,10 @@ const TitleBar = () => {
     <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85">
       
       <div className="flex items-center">
-        <img src="YourCompanyLogo" alt="Company Logo" className="h-8 w-8 mr-2" />
+        <img src="/public/logo.png" alt="Company Logo" className="w-64 h-32 mr-2" />
         <div className="text-6xl">
           Welcome to <br />
-          <span className="text-7xl font-semibold">Your Company Name</span>
+          <span className="text-7xl font-semibold">{globalconfig.companyName}</span>
         </div>
       </div>
 
