@@ -1,23 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 
-const Footer = () => {
-
-
+const Footer = ({ weatherData }) => {
   return (
-    
-    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85 text-5xl font-thin fixed bottom-0 w-full">
-        <div className="flex items-start items-center">
-          <PinIcon />
-          <span className="ml-2">35 Company Ave, City, Province</span>
-        </div>
-        <div className="flex items-end items-center">
-          <SunIcon />
-          <span className="mr-2">22C</span>
-        </div>
+    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85 text-5xl font-thin fixed bottom-0 w-full -mt-6 ">
+      <div className="flex items-start items-center">
+        <PinIcon />
+        <span className="ml-2">35 Company Ave, City, Province</span>
       </div>
-    
+      <div className="flex items-end items-center p-0 ml-4">
+        <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-24 h-24 p-0 -m-4 mr-2 " />
+        <span className="mr-2">{weatherData.temp_c}°C</span>
+      </div>
+    </div>
   );
 };
+
 
 export default Footer;
 
