@@ -13,6 +13,9 @@ Company Kiosk application is otherwise deployed on Raspberry Pi units tied via H
 # Notes
 Due to the security of our client, in addition to NDA, no identifiable information is in this public source code.  In addition, other aspects of the application such as their logo, actual events, announcements, address are withheld. This is a public source code repository for the purposes of demonstration and education purposes only. API middleware is included in this public source code for the purpose of test and demonstrations, but production code for our client is not included.
 
+# Hardware
+Application deployed on multiple low energy <a href="https://amzn.to/42h0TsP">Raspberry Pi Zero 2W</a> units.
+
 # Developer
 Designed, Developed & Deployed by <a href="https://www.erniejohnson.ca/" title="ErnieJohnson.ca">ErnieJohnson.ca</a>
 
