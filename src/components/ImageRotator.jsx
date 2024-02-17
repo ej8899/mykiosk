@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
+import { globalconfig } from '../config.js';
 
 const ImageRotator = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const imageList = [
-    'http://www.tcmd.com/lhl/final1.jpeg', 
-    'http://www.tcmd.com/lhl/final2.jpg', 
-    'http://www.tcmd.com/lhl/final3.jpeg',
-    'http://www.tcmd.com/lhl/final4.jpg', 
-    'http://www.tcmd.com/lhl/final5.jpg',
-    'http://www.tcmd.com/lhl/final6.jpg', 
-    'http://www.tcmd.com/lhl/final7.jpg',   
-  ];
+  // const imageList = [
+  //   'http://www.tcmd.com/lhl/final1.jpeg', 
+  //   'http://www.tcmd.com/lhl/final2.jpg', 
+  //   'http://www.tcmd.com/lhl/final3.jpeg',
+  //   'http://www.tcmd.com/lhl/final4.jpg', 
+  //   'http://www.tcmd.com/lhl/final5.jpg',
+  //   'http://www.tcmd.com/lhl/final6.jpg', 
+  //   'http://www.tcmd.com/lhl/final7.jpg',   
+  // ];
+
+  const imageList = globalconfig.bgImages;
 
   useEffect(() => {
     const initialIndex = Math.floor(Math.random() * imageList.length);
