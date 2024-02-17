@@ -92,7 +92,10 @@ export const globalconfig = {
   ],
 
   carouselImages: [
-    '',
+    {
+      photoURL: '',
+      photoDescription: '',
+    },
   ],
 
   link: {
