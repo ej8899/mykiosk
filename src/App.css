@@ -24,3 +24,13 @@
 .custom-time-container {
   margin-bottom: -1.2rem;
 }
+
+
+.page-transition {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 1;
+}
+
+.page-transition-exit {
+  opacity: 0;
+}
