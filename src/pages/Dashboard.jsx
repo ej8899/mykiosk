@@ -4,7 +4,6 @@ import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 import { Card } from 'flowbite-react';
-import { Carousel } from 'flowbite-react';
 
 import { globalconfig } from '../config.js'
 
