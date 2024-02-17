@@ -23,20 +23,44 @@ const App = () => {
   const primaryPageDuration = 1 * 60 * 1000; // 1 minutes
   const [weatherData, setWeatherData] = useState(null);
 
+
   useEffect(() => {
+
+    console.log(window); // Check the window object contents
+    console.log(window.logger); // Check if logger object exists
+
+    // Access the Logger object once the script has fully loaded
+    // const logger = window.logger; // Assuming logger is the global object initialized in index.html
+    // if (logger) {
+    //   // Access its methods or properties as needed
+    //   logger.trace('Accessed logger object from index.html');
+    // } else {
+    //   console.error('Logger object not found');
+    // }
+
+
+    const logger = window.initializeLogger();
+  
+  
+
     // Function to fetch weather data
     const fetchWeatherData = async () => {
       try {
         const response = await fetch('https://erniejohnson.ca/clients/wxapi.php');
         
         if (!response.ok) {
+          if (logger) {
+            logger.error('Failed to fetch weather data');
+          }
           throw new Error('Failed to fetch weather data');
         }
 
         const data = await response.json();
         setWeatherData(data);
+        logger.info("windsor wx loaded ok");
         //console.log(weatherData.current.condition.text)
       } catch (error) {
+        logger.error("windsor wx error");
         console.error(error);
       }
     };
