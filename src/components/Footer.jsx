@@ -2,6 +2,7 @@
 import { globalconfig } from '../config.js';
 
 const Footer = ({ weatherData }) => {
+  console.log(weatherData);
   return (
     <div className="bg-gray-800 text-white p-2 flex flex-row items-center justify-between px-4 bg-opacity-85 text-5xl font-thin fixed bottom-0 w-full -mt-6 ">
       <div className="flex items-start items-center">
@@ -9,8 +10,13 @@ const Footer = ({ weatherData }) => {
         <span className="ml-2">{globalconfig.companyAddress}</span>
       </div>
       <div className="flex items-end items-center p-0 ml-4">
-        <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-24 h-24 p-0 -m-4 mr-2 " />
-        <span className="mr-2">{weatherData.temp_c}°C</span>
+      {weatherData && (
+  <>
+    <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-24 h-24 p-0 -m-4 mr-2" />
+    <span className="mr-2">{weatherData.temp_c}°C</span>
+  </>
+)}
+
       </div>
     </div>
   );
