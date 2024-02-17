@@ -4,7 +4,7 @@
  */
 
 import { useState, useEffect } from 'react';
-import { getCurrentTime, formatTime, getTimeZoneAbbr } from '../helpers';
+import { getCurrentTime, getTimeZoneAbbr } from '../helpers';
 
 export default function Component() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
