@@ -8,6 +8,7 @@ import Page5 from './pages/Photo';
 import Page6 from './pages/Announcements';
 
 import ImageRotator from './components/ImageRotator.jsx';
+import { CSSTransition } from 'react-transition-group';
 
 import './config.js';
 
@@ -26,8 +27,8 @@ const App = () => {
 
   useEffect(() => {
 
-    console.log(window); // Check the window object contents
-    console.log(window.logger); // Check if logger object exists
+    // console.log(window); // Check the window object contents
+    // console.log(window.logger); // Check if logger object exists
 
     // Access the Logger object once the script has fully loaded
     // const logger = window.logger; // Assuming logger is the global object initialized in index.html
@@ -62,6 +63,7 @@ const App = () => {
       } catch (error) {
         logger.error("windsor wx error");
         console.error(error);
+        setWeatherData('na')
       }
     };
 
@@ -105,7 +107,7 @@ const App = () => {
   
   const renderPage = () => {
     if (!weatherData) {
-      return <div>Loading from API's...</div>;
+      return <div>Loading from API&apos;s...</div>;
     }
   
     let selectedPage;
@@ -122,6 +124,10 @@ const App = () => {
       case 2:
         return <Page2 />;
       case 3:
+        if (weatherData === 'na') {
+          return <Page2 />;
+        }
+        console.log('wx data in switch:',weatherData)
         return <Page3 weatherData={weatherData.current} />;
       case 4:
         return <Page4 />;
@@ -136,10 +142,17 @@ const App = () => {
   
 
   return (
-    <div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
+<div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
       <ImageRotator />
       <div className="flex-grow">
-        {renderPage()}
+        <CSSTransition
+          in={true}
+          timeout={1500}
+          classNames="page-transition"
+          unmountOnExit
+        >
+          {renderPage()}
+        </CSSTransition>
       </div>
     </div>
   );
