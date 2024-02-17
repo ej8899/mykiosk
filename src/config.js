@@ -86,15 +86,27 @@ export const globalconfig = {
   ],
 
   bgImages: [
-    '',
-    '',
-    '',
+    'http://www.tcmd.com/lhl/final1.jpeg', 
+    'http://www.tcmd.com/lhl/final2.jpg', 
+    'http://www.tcmd.com/lhl/final3.jpeg',
+    'http://www.tcmd.com/lhl/final4.jpg', 
+    'http://www.tcmd.com/lhl/final5.jpg',
+    'http://www.tcmd.com/lhl/final6.jpg', 
+    'http://www.tcmd.com/lhl/final7.jpg',
   ],
 
   carouselImages: [
     {
-      photoURL: '',
-      photoDescription: '',
+      photoURL: 'http://www.meetguinness.com/ztemp/IMG_7099.jpeg',
+      photoDescription: 'guinness 1',
+    },
+    {
+      photoURL: 'http://www.meetguinness.com/ztemp/IMG_7136.jpeg',
+      photoDescription: 'guinness #2',
+    },
+    {
+      photoURL: 'http://www.meetguinness.com/ztemp/IMG_7153.jpeg',
+      photoDescription: 'guinness #3',
     },
   ],
 
