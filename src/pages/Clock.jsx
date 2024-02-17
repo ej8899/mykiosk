@@ -20,7 +20,7 @@ export default function Component() {
 
   const timeZoneAbbr = getTimeZoneAbbr(timeZone);
   // const formattedTime = formatTime(currentTime);
-  const formattedTime = currentTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
+  const formattedTime = currentTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
 
   // const formattedTime = (value) => (value < 10 ? `0${value}` : value);
 
