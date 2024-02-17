@@ -17,22 +17,22 @@ const TitleBar = () => {
     month: 'long',
     day: 'numeric',
   });
-  const formattedTime = currentDateTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric' });
+  const formattedTime = currentDateTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
 
 
   return (
-    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85">
+    <div className="bg-gray-800 text-white p-2 flex flex-row items-center justify-between px-6 bg-opacity-85">
       
       <div className="flex items-center">
         <img src="/public/logo.png" alt="Company Logo" className="w-64 h-32 mr-2" />
-        <div className="text-6xl">
+        <div className="text-5xl font-thin">
           Welcome to <br />
-          <span className="text-7xl font-semibold">{globalconfig.companyName}</span>
+          <span className="text-7xl font-extrabold">{globalconfig.companyName}</span>
         </div>
       </div>
 
       <div className='flex flex-col text-right'>
-        <div className="text-6xl font-extrabold">{formattedTime}</div>
+        <div className="text-6xl font-extrabold uppercase">{formattedTime}</div>
         <div className="text-5xl font-thin">{formattedDate}</div>
       </div>
 

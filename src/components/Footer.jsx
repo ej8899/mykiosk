@@ -4,7 +4,7 @@ import { globalconfig } from '../config.js';
 
 const Footer = ({ weatherData }) => {
   return (
-    <div className="bg-gray-800 text-white p-4 flex flex-row items-center justify-between px-4 bg-opacity-85 text-5xl font-thin fixed bottom-0 w-full -mt-6 ">
+    <div className="bg-gray-800 text-white p-2 flex flex-row items-center justify-between px-4 bg-opacity-85 text-5xl font-thin fixed bottom-0 w-full -mt-6 ">
       <div className="flex items-start items-center">
         <PinIcon />
         <span className="ml-2">{globalconfig.companyAddress}</span>
