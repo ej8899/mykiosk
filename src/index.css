@@ -5,6 +5,11 @@
 
 /* index.css */
 
+/* html, body {
+  width: 1920px;
+  height: 1080px;
+} */
+
 /* Box sizing rules */
 html {
   box-sizing: border-box;
