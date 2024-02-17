@@ -48,11 +48,11 @@ const Dashboard = ({weatherData}) => {
       <NavBar />
       <div className="dark flex flex-row flex-grow  mr-8 ml-8 mt-4">
         
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-4 w-1/3">
           <h1 className="text-4xl font-bold text-blue-400 uppercase">Upcoming Events...</h1>
             <div className="flex flex-col gap-6 mr-4">
             {upcomingEvents.map((event, index) => (
-              <Card key={index} className="border-0 border-l-8 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70">
+              <Card key={index} className="border-0 border-l-8 border-blue-500 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold text-white">{event.title}</h2>
                   <h3 className="text-2xl font-bold text-white">{formatEventDate(event.date)}</h3>
@@ -64,25 +64,26 @@ const Dashboard = ({weatherData}) => {
           </div>
 
           
-          <div className="carousel h-256 sm:h-264 xl:h-280 2xl:h-full w-full ml-4 mt-0">
+          <div className="carousel h-256 sm:h-264 xl:h-280 2xl:h-full ml-4 mt-0 w-2/3">
             <h1 className="text-4xl font-bold text-blue-400 mt-0 uppercase">Announcements...</h1>
             <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 rounded-xl p-4 mt-4">
             <div className="text-2xl text-white mt-0 mb-4" dangerouslySetInnerHTML={{ __html: firstAnnouncement }}></div>
             
             </div>
             <h1 className="text-4xl font-bold text-blue-400 mt-4 uppercase">Happening on Site...</h1>
-          <Carousel leftControl="&nbsp;" rightControl="&nbsp;" className="w-full mb-4 mt-4 rounded-xl dark:border-blue-500 border-2"  slideInterval={9000}>
-            
-            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+          {/* <Carousel leftControl="&nbsp;" rightControl="&nbsp;" className="w-full mb-4 mt-4 rounded-xl dark:border-blue-500 border-2"  slideInterval={9000}> */}
+          <div className="flex flex-row w-full mb-4 mt-4 ">
+            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl border-blue-500  dark:border-blue-500 border-2 mr-4 overflow-hidden">
               <img src="http://www.tcmd.com/lhl/final5.jpg"></img>
             </div>
-            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl  border-blue-500 dark:border-blue-500 border-2 overflow-hidden">
               <img src="http://www.tcmd.com/lhl/final6.jpg"></img>
             </div>
-            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
+            {/* <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
               <img src="http://www.tcmd.com/lhl/final7.jpg"></img>
-            </div>
-          </Carousel>
+            </div> */}
+          </div>
+          {/* </Carousel> */}
         </div>
         
       </div>
