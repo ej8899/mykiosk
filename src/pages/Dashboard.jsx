@@ -53,7 +53,6 @@ const Dashboard = ({weatherData}) => {
       index2 = generateRandomIndex();
       
     } while (index1 === index2); // Keep generating indices until they are different
-console.log(index1, index2)
     setRandomIndices([index1, index2]);
   }, [globalconfig.carouselImages]);
 

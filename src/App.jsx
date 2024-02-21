@@ -14,10 +14,11 @@ import './config.js';
 
 import './App.css'
 
+const logger = window.initializeLogger();
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = 1;  // set to 0 for rotation
+  const forcedPage = 0;  // set to 0 for rotation
   const primaryPage = 1;
   const secondaryPages = [2, 3, 4, 5, 6];
   const secondaryPageDuration = 30 * 1000; // 30 seconds
@@ -127,7 +128,7 @@ const App = () => {
         if (weatherData === 'na') {
           return <Page2 />;
         }
-        console.log('wx data in switch:',weatherData)
+        logger.info("skipping wx page");
         return <Page3 weatherData={weatherData.current} />;
       case 4:
         return <Page4 />;
@@ -147,8 +148,8 @@ const App = () => {
       <div className="flex-grow">
         <CSSTransition
           in={true}
-          timeout={1500}
-          classNames="page-transition"
+          timeout={300}
+          classNames="fade"
           unmountOnExit
         >
           {renderPage()}
