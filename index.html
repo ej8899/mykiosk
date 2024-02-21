@@ -2,10 +2,20 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Company Kiosk - licensed to: </title>
+
+    
+    <script>
+      function initializeLogger() {
+          const logger = new Logger('KIOSK-DEMO');
+          logger.toggleConsoleLog(true);
+          logger.info('kiosk (demo) loaded ok');
+          return logger;
+      }
+    </script>
+    <script src="https://erniejohnson.ca/logger.js"></script>
   </head>
   <body>
     <div id="root"></div>
