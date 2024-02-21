@@ -12,7 +12,7 @@ const Footer = ({ weatherData }) => {
       <div className="flex items-end items-center p-0 ml-4">
       {weatherData && (
   <>
-    <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-24 h-24 p-0 -m-4 mr-2" />
+    <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-24 h-24 p-0 -m-2 mr-2 pb-4" />
     <span className="mr-2">{weatherData.temp_c}°C</span>
   </>
 )}

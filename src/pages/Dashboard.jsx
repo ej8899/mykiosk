@@ -1,5 +1,7 @@
 
 
+import { useState, useEffect } from 'react';
+
 import NavBar from '../components/Navbar'
 import Footer from '../components/Footer'
 
@@ -31,19 +33,33 @@ function formatEventDate(eventDate) {
 
 
 const Dashboard = ({weatherData}) => {
+  const [randomIndices, setRandomIndices] = useState([0,1]); // Initialize state to hold random indices
+
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
   
-    const upcomingEvents = globalconfig.events
-    .filter((event) => new Date(event.date) >= today)
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+  const upcomingEvents = globalconfig.events
+  .filter((event) => new Date(event.date) >= today)
+  .sort((a, b) => new Date(a.date) - new Date(b.date));
 
   const firstAnnouncement = globalconfig.announcements[0];
 
+  useEffect(() => {
+    const generateRandomIndex = () => Math.floor(Math.random() * globalconfig.carouselImages.length);
+    let index1, index2;
+    do {
+      index1 = generateRandomIndex();
+      index2 = generateRandomIndex();
+      
+    } while (index1 === index2); // Keep generating indices until they are different
+console.log(index1, index2)
+    setRandomIndices([index1, index2]);
+  }, [globalconfig.carouselImages]);
+
 
   return (
-    <div className="flex flex-col h-screen w-screen bg-black bg-opacity-15 min-h-screen">
+    <div className="flex flex-col h-screen w-screen bg-black bg-opacity-65 min-h-screen">
       <NavBar />
       <div className="dark flex flex-row flex-grow  mr-8 ml-8 mt-4">
         
@@ -51,10 +67,10 @@ const Dashboard = ({weatherData}) => {
           <h1 className="text-4xl font-bold text-blue-400 uppercase">Upcoming Events...</h1>
             <div className="flex flex-col gap-6 mr-4">
             {upcomingEvents.map((event, index) => (
-              <Card key={index} className="border-0 border-l-8 border-blue-500 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70">
+              <Card key={index} className="border-0 border-l-8 border-blue-500 dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80">
                 <div className="flex flex-col gap-2">
                   <h2 className="text-3xl font-bold text-white">{event.title}</h2>
-                  <h3 className="text-2xl font-bold text-white">{formatEventDate(event.date)}</h3>
+                  <h3 className="text-2xl font-bold text-slate-400">{formatEventDate(event.date)}</h3>
                   <p className="text-xl text-gray-400">{event.details}</p>
                 </div>
               </Card>
@@ -65,24 +81,29 @@ const Dashboard = ({weatherData}) => {
           
           <div className="carousel h-256 sm:h-264 xl:h-280 2xl:h-full ml-4 mt-0 w-2/3">
             <h1 className="text-4xl font-bold text-blue-400 mt-0 uppercase">Announcements...</h1>
-            <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 rounded-xl p-4 mt-4">
+            <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80 rounded-xl p-4 mt-4">
             <div className="text-2xl text-white mt-0 mb-4" dangerouslySetInnerHTML={{ __html: firstAnnouncement }}></div>
             
             </div>
             <h1 className="text-4xl font-bold text-blue-400 mt-4 uppercase">Happening on Site...</h1>
-          {/* <Carousel leftControl="&nbsp;" rightControl="&nbsp;" className="w-full mb-4 mt-4 rounded-xl dark:border-blue-500 border-2"  slideInterval={9000}> */}
-          <div className="flex flex-row w-full mb-4 mt-4 ">
-            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl border-blue-500  dark:border-blue-500 border-2 mr-4 overflow-hidden">
-              <img src="http://www.tcmd.com/lhl/final5.jpg"></img>
+          <div className="flex items-stretch flex-row w-full mb-4 mt-4 ">
+            <div className="flex-1 h-auto items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl border-blue-500  dark:border-blue-500 border-2 mr-4 overflow-hidden w-1/2">
+              <img
+                src={globalconfig.carouselImages[randomIndices[0]].photoURL}
+                alt="Carousel Image 1"
+                className="w-full h-auto max-h-96 object-cover"
+                // style={{ objectFit: 'cover' }}
+              />
             </div>
-            <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl  border-blue-500 dark:border-blue-500 border-2 overflow-hidden">
-              <img src="http://www.tcmd.com/lhl/final6.jpg"></img>
+            <div className="flex-1 h-auto items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white rounded-xl  border-blue-500 dark:border-blue-500 border-2 overflow-hidden w-1/2">
+              <img
+                src={globalconfig.carouselImages[randomIndices[1]].photoURL}
+                alt="Carousel Image 2"
+                className="w-full h-auto max-h-96 object-cover"
+                // style={{ objectFit: 'cover' }}
+              />
             </div>
-            {/* <div className="flex h-full items-center justify-center bg-gray-400 dark:bg-gray-700 dark:text-white">
-              <img src="http://www.tcmd.com/lhl/final7.jpg"></img>
-            </div> */}
           </div>
-          {/* </Carousel> */}
         </div>
         
       </div>

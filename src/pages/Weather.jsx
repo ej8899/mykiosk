@@ -5,18 +5,18 @@
  */
 export default function WeatherPage({weatherData}) {
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-10">
       <div className="mt-10 flex flex-col items-center justify-center space-y-4 w-2/5 fixed bottom-0 right-0 p-16 ">
       <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 w-full rounded-xl p-4">
       <div className="flex space-x-4 items-center justify-center">
-        <div className="text-6xl font-thin text-white">Windsor, ON</div>
+        <div className="text-6xl font-thin text-white pb-4">Windsor, ON</div>
       </div>
       <div className="flex space-x-4 items-center justify-center -m-6 p-0">
           {/* <SunIcon className="h-16 w-16 text-yellow-500" /> */}
           <img src={`https:${weatherData.condition.icon}`} alt={weatherData.condition.text} className="w-32 h-32" />
           <div className="text-7xl font-bold text-white m-0 p-0">{weatherData.temp_c}°C</div>
         </div>
-        <div className="flex space-x-4 items-center justify-center">
+        <div className="flex space-x-4 items-center justify-center pt-2">
           <div className="text-6xl font-bold text-white">{weatherData.condition.text}</div>
           
           {/* <SunIcon className="h-16 w-16 text-yellow-500" />

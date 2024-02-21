@@ -20,16 +20,17 @@ export default function Component() {
 
   const timeZoneAbbr = getTimeZoneAbbr(timeZone);
   // const formattedTime = formatTime(currentTime);
-  const formattedTime = currentTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
+  // const formattedTime = currentTime.toLocaleTimeString([], { hour: 'numeric', minute: 'numeric', hour12: true });
+  const formattedTime = currentTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
   // const formattedTime = (value) => (value < 10 ? `0${value}` : value);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
+    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-10">
       <div className="flex flex-col justify-center  text-center fixed bottom-0 right-0 p-16">
 
-      <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 rounded-xl p-4">
-        <div className="clock text-9xl text-white font-bold mb-0 p-0 custom-time-container">
+      <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 rounded-xl p-4 pl-8 pr-8">
+        <div className="clock text-9xl text-white font-bold mb-0 p-0 custom-time-container uppercase">
           {formattedTime}
         </div>
 

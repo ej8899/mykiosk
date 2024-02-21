@@ -80,7 +80,10 @@ const Countdown = () => {
   }, [closestEvent]);
 
   return (
-    <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-45">
+    <div
+      className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-10 bg-cover"
+      style={{ backgroundImage: closestEvent.photoURL ? `url(${closestEvent.photoURL})` : 'none' }}
+    >
       <div className="text-center min-w-fit fixed bottom-0 right-0 p-16">
         {closestEvent && (
           <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 w-full rounded-xl p-4 ">
@@ -91,10 +94,10 @@ const Countdown = () => {
                 <span className="text-9xl font-extrabold text-white inline-block w-40 pb-2 z-10">
                   {timeLeft.days.toString().padStart(2, '0')}
                 </span>
-                <span className="text-6xl font-bold text-gray-400 ml-2 mt-16">DAYS</span>
+                <span className="text-6xl font-bold text-gray-400 ml-10 mt-16">DAYS</span>
               </div>
 
-              <div className="flex flex-row">
+              <div className="flex flex-row -mt-4">
                 <div className="text-6xl font-bold text-white mx-4">
                   {timeLeft.hours.toString().padStart(2, '0')}h
                 </div>
