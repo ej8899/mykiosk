@@ -27,23 +27,7 @@ const App = () => {
 
 
   useEffect(() => {
-
-    // console.log(window); // Check the window object contents
-    // console.log(window.logger); // Check if logger object exists
-
-    // Access the Logger object once the script has fully loaded
-    // const logger = window.logger; // Assuming logger is the global object initialized in index.html
-    // if (logger) {
-    //   // Access its methods or properties as needed
-    //   logger.trace('Accessed logger object from index.html');
-    // } else {
-    //   console.error('Logger object not found');
-    // }
-
-
     const logger = window.initializeLogger();
-  
-  
 
     // Function to fetch weather data
     const fetchWeatherData = async () => {
