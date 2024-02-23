@@ -30,3 +30,9 @@ Designed, Developed & Deployed by <a href="https://www.erniejohnson.ca/" title="
 - Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>
 - Built using React + Vite 
 - Utilizing TailwindCSS + FlowBite UI Components
+
+
+# Other PI notes...
+/etc/xdg/lxsessions/LXDEpi/autostart
+/media/user/Untitled -> /var/www/html
+1920x1080
