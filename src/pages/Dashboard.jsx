@@ -78,12 +78,15 @@ const Dashboard = ({weatherData}) => {
           </div>
 
           
-          <div className="carousel h-256 sm:h-264 xl:h-280 2xl:h-full ml-4 mt-0 w-2/3">
+          <div className="h-256 sm:h-264 xl:h-280 2xl:h-full ml-4 mt-0 w-2/3">
             <h1 className={`text-4xl font-bold text-${globalconfig.accentColor}-400 mt-0 uppercase`}>Announcements...</h1>
-            <div className={`dark:border-${globalconfig.accentColor}-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80 rounded-xl p-4 mt-4`}>
-            <div className="text-2xl text-white mt-0 mb-4" dangerouslySetInnerHTML={{ __html: firstAnnouncement }}></div>
-            
-            </div>
+            <Card className={`mt-4 border-0 border-l-8 border-${globalconfig.accentColor}-500 dark:border-${globalconfig.accentColor}-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80`}>
+              <div className={`border-0  border-${globalconfig.accentColor}-500 dark:border-${globalconfig.accentColor}-400 dark:border-${globalconfig.accentColor}-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80 rounded-xl p-0 mt-0`}>
+                
+                <div className="text-2xl text-white mt-0 mb-4" dangerouslySetInnerHTML={{ __html: firstAnnouncement }}></div>
+                
+              </div>
+            </Card>
             <h1 className={`text-4xl font-bold text-${globalconfig.accentColor}-400 mt-4 uppercase`}>Happening on Site...</h1>
           <div className="flex items-stretch flex-row w-full mb-4 mt-4 ">
           <div className="flex-1 h-auto items-center justify-center bg-gray-400  dark:text-white rounded-xl border-blue-400  border-0 mr-4 overflow-hidden w-1/2 relative">
@@ -93,7 +96,7 @@ const Dashboard = ({weatherData}) => {
               className="w-full h-auto max-h-96 object-cover"
               // style={{ objectFit: 'cover' }}
             />
-            <div className={`absolute bottom-0 left-0 right-0 p-1 bg-black text-slate-300 text-right text-xl bg-gradient-to-t from-${globalconfig.accentColor}-700 to-${globalconfig.accentColor}-800/25 bg-opacity-55 font-semibold`}>{globalconfig.carouselImages[randomIndices[0]].photoDescription}</div>
+            <div className={`absolute bottom-0 left-0 right-0 p-1 bg-black text-slate-300 text-right text-xl bg-gradient-to-t from-${globalconfig.accentColor}-500 to-${globalconfig.accentColor}-500/20 bg-opacity-40 font-semibold`}>{globalconfig.carouselImages[randomIndices[0]].photoDescription}</div>
           </div>
           <div className="flex-1 h-auto items-center justify-center bg-gray-400  dark:text-white rounded-xl  border-blue-400  border-0 overflow-hidden w-1/2 relative">
             <img
@@ -102,7 +105,7 @@ const Dashboard = ({weatherData}) => {
               className="w-full h-auto max-h-96 object-cover"
               // style={{ objectFit: 'cover' }}
             />
-            <div className={`absolute bottom-0 left-0 right-0 p-1 bg-black text-slate-300 text-right text-xl bg-gradient-to-t from-${globalconfig.accentColor}-700 to-${globalconfig.accentColor}-800/25 bg-opacity-55 font-semibold`}>{globalconfig.carouselImages[randomIndices[1]].photoDescription}</div>
+            <div className={`absolute bottom-0 left-0 right-0 p-1 bg-black text-slate-300 text-right text-xl bg-gradient-to-t from-${globalconfig.accentColor}-500 to-${globalconfig.accentColor}-500/20 bg-opacity-40 font-semibold`}>{globalconfig.carouselImages[randomIndices[1]].photoDescription}</div>
             </div>
           </div>
         </div>
