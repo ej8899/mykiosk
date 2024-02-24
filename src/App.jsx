@@ -10,7 +10,7 @@ import Page6 from './pages/Announcements';
 import ImageRotator from './components/ImageRotator.jsx';
 import { CSSTransition } from 'react-transition-group';
 
-import './config.js';
+import { globalconfig } from './config.js';
 
 import './App.css'
 
@@ -18,16 +18,22 @@ const logger = window.initializeLogger();
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = 0;  // set to 0 for rotation
-  const primaryPage = 1;
-  const secondaryPages = [2, 3, 4, 5, 6];
-  const secondaryPageDuration = 30 * 1000; // 30 seconds
-  const primaryPageDuration = 1 * 60 * 1000; // 1 minutes
+  const forcedPage = globalconfig.lockToPage;
+  const DASHBOARD = 1;
+  const COUNTDOWN = 2;
+  const WEATHER = 3;
+  const CLOCK = 4;
+  const PHOTO = 5;
+  const ANNOUNCEMENTS = 6;
+
+  const primaryPage = DASHBOARD;
+  const secondaryPages = [COUNTDOWN, WEATHER, CLOCK, PHOTO, ANNOUNCEMENTS];
+  const secondaryPageDuration = globalconfig.secondaryPageTime * 60 * 1000; 
+  const primaryPageDuration = globalconfig.primaryPageTime * 60 * 1000;
   const [weatherData, setWeatherData] = useState(null);
 
 
-  useEffect(() => {
-    const logger = window.initializeLogger();
+  useEffect(() => {  
 
     // Function to fetch weather data
     const fetchWeatherData = async () => {
@@ -104,21 +110,21 @@ const App = () => {
     }
   
     switch (selectedPage) {
-      case 1:
+      case DASHBOARD:
         return <Page1 weatherData={weatherData.current} />;
-      case 2:
+      case COUNTDOWN:
         return <Page2 />;
-      case 3:
+      case WEATHER:
         if (weatherData === 'na') {
+          logger.info('skipping weather display')
           return <Page2 />;
         }
-        logger.info("skipping wx page");
         return <Page3 weatherData={weatherData.current} />;
-      case 4:
+      case CLOCK:
         return <Page4 />;
-      case 5:
+      case PHOTO:
         return <Page5 />;
-      case 6:
+      case ANNOUNCEMENTS:
         return <Page6 />;
       default:
         return null;
@@ -132,7 +138,7 @@ const App = () => {
       <div className="flex-grow">
         <CSSTransition
           in={true}
-          timeout={300}
+          timeout={1500}
           classNames="fade"
           unmountOnExit
         >
