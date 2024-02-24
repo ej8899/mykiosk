@@ -21,19 +21,7 @@
 
 
 
-.custom-time-container {
-  margin-bottom: -1.2rem;
-}
 
-
-.page-transition {
-  transition: opacity 0.5s ease-in-out;
-  opacity: 1;
-}
-
-.page-transition-exit {
-  opacity: 0;
-}
 
 
 .fade-enter {
@@ -41,7 +29,7 @@
 }
 
 .fade-enter-active {
-  transition: opacity 300ms ease-in;
+  transition: opacity 1300ms ease-in;
   opacity: 1;
 }
 
@@ -50,6 +38,23 @@
 }
 
 .fade-exit-active {
-  transition: opacity 300ms ease-in;
+  transition: opacity 1300ms ease-in;
   opacity: 0;
+}
+
+
+.page-container {
+  transition: opacity 0.3s ease; /* Example transition effect: fade with a duration of 0.3 seconds */
+}
+
+.transitioning {
+  opacity: 0; /* Make the page transparent during the transition */
+}
+
+.page {
+  transition: opacity 0.3s ease; /* Example transition effect: fade with a duration of 0.3 seconds */
+}
+
+.fade-out {
+  opacity: 0; /* Make the page transparent to fade it out */
 }
