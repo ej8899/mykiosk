@@ -35,7 +35,7 @@ export default function Component() {
           {formattedTime}
         </div>
 
-        <div className={`text-6xl font-bold text-${globalconfig.accentColor}-300 mt-0 p-0 flex-grow text-right`}>
+        <div className={`text-6xl font-bold text-${globalconfig.accentColor}-500 -mt-4 p-0 flex-grow text-right`}>
           {timeZoneAbbr}
         </div>
       </div>
