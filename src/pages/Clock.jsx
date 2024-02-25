@@ -6,6 +6,7 @@
 import { useState, useEffect } from 'react';
 import { getCurrentTime, getTimeZoneAbbr } from '../helpers';
 import { globalconfig } from '../config.js';
+import { Card } from 'flowbite-react';
 
 export default function Component() {
   const [currentTime, setCurrentTime] = useState(getCurrentTime());
@@ -29,7 +30,7 @@ export default function Component() {
   return (
     <div className="dark flex flex-col items-center justify-center h-screen w-screen bg-black bg-opacity-10">
       <div className="flex flex-col justify-center  text-center fixed bottom-0 right-0 p-16">
-
+      <Card className={`mt-4 border-0 border-l-8 border-${globalconfig.accentColor}-500 dark:border-${globalconfig.accentColor}-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80`}>
       <div className="dark:border-blue-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-70 rounded-xl p-4 pl-8 pr-8">
         <div className="clock text-9xl text-white font-bold mb-0 p-0 custom-time-container uppercase">
           {formattedTime}
@@ -39,7 +40,7 @@ export default function Component() {
           {timeZoneAbbr}
         </div>
       </div>
-
+      </Card>
       </div>
     </div>
   )
