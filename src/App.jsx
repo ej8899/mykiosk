@@ -6,6 +6,7 @@ import Page3 from './pages/Weather';
 import Page4 from './pages/Clock';
 import Page5 from './pages/Photo';
 import Page6 from './pages/Announcements';
+import People from './pages/People';
 
 import ImageRotator from './components/ImageRotator.jsx';
 import { CSSTransition } from 'react-transition-group';
@@ -18,16 +19,20 @@ const logger = window.initializeLogger();
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const forcedPage = globalconfig.lockToPage;
+  
   const DASHBOARD = 1;
   const COUNTDOWN = 2;
   const WEATHER = 3;
   const CLOCK = 4;
   const PHOTO = 5;
   const ANNOUNCEMENTS = 6;
+  const PEOPLE = 7;
+
+  const forcedPage = globalconfig.lockToPage;
+  // const forcedPage = PEOPLE;
 
   const primaryPage = DASHBOARD;
-  const secondaryPages = [COUNTDOWN, WEATHER, CLOCK, PHOTO, ANNOUNCEMENTS];
+  const secondaryPages = [COUNTDOWN, WEATHER, CLOCK, PHOTO, ANNOUNCEMENTS, ];
   const secondaryPageDuration = globalconfig.secondaryPageTime * 60 * 1000; 
   const primaryPageDuration = globalconfig.primaryPageTime * 60 * 1000;
   const [weatherData, setWeatherData] = useState(null);
@@ -126,6 +131,8 @@ const App = () => {
         return <Page5 />;
       case ANNOUNCEMENTS:
         return <Page6 />;
+      case PEOPLE:
+        return <People />;
       default:
         return null;
     }
