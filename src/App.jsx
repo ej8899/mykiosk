@@ -32,7 +32,7 @@ const App = () => {
   // const forcedPage = PEOPLE;
 
   const primaryPage = DASHBOARD;
-  const secondaryPages = [COUNTDOWN, WEATHER, CLOCK, PHOTO, ANNOUNCEMENTS, ];
+  const secondaryPages = [COUNTDOWN, WEATHER, CLOCK, PHOTO, ANNOUNCEMENTS, PEOPLE];
   const secondaryPageDuration = globalconfig.secondaryPageTime * 60 * 1000; 
   const primaryPageDuration = globalconfig.primaryPageTime * 60 * 1000;
   const [weatherData, setWeatherData] = useState(null);
