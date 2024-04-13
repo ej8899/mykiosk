@@ -1,31 +1,36 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { globalconfig } from '../config.js';
 
-const ImageRotator = () => {
+const ImageRotator = ({ forceChange }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // const imageList = [
-  //   'http://www.tcmd.com/lhl/final1.jpeg', 
-  //   'http://www.tcmd.com/lhl/final2.jpg', 
-  //   'http://www.tcmd.com/lhl/final3.jpeg',
-  //   'http://www.tcmd.com/lhl/final4.jpg', 
-  //   'http://www.tcmd.com/lhl/final5.jpg',
-  //   'http://www.tcmd.com/lhl/final6.jpg', 
-  //   'http://www.tcmd.com/lhl/final7.jpg',   
-  // ];
+  const [initialized, setInitialized] = useState(false); // Track if component is initialized
 
   const imageList = globalconfig.bgImages;
 
   useEffect(() => {
-    const initialIndex = Math.floor(Math.random() * imageList.length);
-    setCurrentImageIndex(initialIndex);
-    
-    const rotateInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % imageList.length);
-    }, 600000); // 10 minutes in milliseconds
+    const randomizeIndex = () => {
+      const newIndex = Math.floor(Math.random() * imageList.length);
+      setCurrentImageIndex(newIndex);
+    };
 
-    return () => clearInterval(rotateInterval);
-  }, [currentImageIndex, imageList.length]);
+    if (!initialized) {
+      // Initialize the component by randomizing the index
+      randomizeIndex();
+      setInitialized(true);
+    }
+
+    if (forceChange) {
+      // If forceChange is true, generate a random index for the background image
+      randomizeIndex();
+    } else {
+      // If forceChange is not true, continue rotating the background images based on the timed interval
+      const rotateInterval = setInterval(() => {
+        randomizeIndex();
+      }, 600000); // 10 minutes in milliseconds
+
+      return () => clearInterval(rotateInterval);
+    }
+  }, [forceChange, imageList.length, initialized]);
 
   const backgroundImageStyle = {
     backgroundImage: `url(${imageList[currentImageIndex]})`,
