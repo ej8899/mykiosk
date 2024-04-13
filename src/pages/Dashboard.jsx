@@ -8,6 +8,7 @@ import Footer from '../components/Footer'
 import { Card } from 'flowbite-react';
 
 import { globalconfig } from '../config.js'
+import UpcomingEvents from '../components/DashboardEvents.jsx';
 
 function formatEventDate(eventDate) {
   const today = new Date();
@@ -62,7 +63,7 @@ const Dashboard = ({weatherData}) => {
       <NavBar />
       <div className="dark flex flex-row flex-grow  mr-8 ml-8 mt-4">
         
-          <div className="flex flex-col gap-4 w-1/3">
+          {/* <div className="flex flex-col gap-4 w-1/3">
           <h1 className={`text-4xl font-bold text-${globalconfig.accentColor}-400 uppercase`}>Upcoming Events...</h1>
             <div className="flex flex-col gap-6 mr-4">
             {upcomingEvents.map((event, index) => (
@@ -75,7 +76,9 @@ const Dashboard = ({weatherData}) => {
               </Card>
             ))}
             </div>
-          </div>
+          </div> */}
+
+          <UpcomingEvents upcomingEvents={globalconfig.events} />
 
           
           <div className="h-256 sm:h-264 xl:h-280 2xl:h-full ml-4 mt-0 w-2/3">
