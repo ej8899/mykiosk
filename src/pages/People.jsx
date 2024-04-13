@@ -29,7 +29,7 @@ const People = () => {
               <img
                 src={randomAnnouncement.photoURL}
                 alt="profile image"
-                className={`rounded-full w-96 h-96 object-cover border-[10px] border-dotted border-${globalconfig.accentColor}-500/90 dark:border-${globalconfig.accentColor}-400/90 p-2 p-0 m-0 z-50 ml-4`}
+                className={`rounded-full  h-96 object-cover border-[10px] border-dotted border-${globalconfig.accentColor}-500/90 dark:border-${globalconfig.accentColor}-400/90 p-2 p-0 m-0 z-50 ml-4`}
                 style={{
                   padding: '10px', // Adjust as needed based on border width
                   boxShadow: 'inset 0 0 0 2px transparent',
