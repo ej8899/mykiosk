@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 
+
+
+
 import Page1 from './pages/Dashboard.jsx';
 import Page2 from './pages/Countdown.jsx';
 import Page3 from './pages/Weather';
@@ -8,6 +11,7 @@ import Page5 from './pages/Photo';
 import Page6 from './pages/Announcements';
 import People from './pages/People';
 
+import ImagePrefetch from './components/Prefetch';
 import ImageRotator from './components/ImageRotator.jsx';
 import { CSSTransition } from 'react-transition-group';
 
@@ -19,7 +23,8 @@ const logger = window.initializeLogger();
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  
+  const [forceChange, setForceChange] = useState(false); // Track if a background image change is forced
+
   const DASHBOARD = 1;
   const COUNTDOWN = 2;
   const WEATHER = 3;
@@ -71,10 +76,38 @@ const App = () => {
   }, []);
 
 
+  const handlePageChange = () => {
+    console.log('setPageChanged')
+    setForceChange(true);
+  };
 
   const getRandomSecondaryPage = () => {
     return secondaryPages[Math.floor(Math.random() * secondaryPages.length)];
   };
+  
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setCurrentPage((prevPage) => {
+  //       if (prevPage === primaryPage) {
+  //         // If the current page is the primary page, switch to a random secondary page
+  //         return getRandomSecondaryPage();
+  //       } else {
+  //         // If the current page is a secondary page, switch back to the primary page
+  //         return primaryPage;
+  //       }
+  //     });
+  //   }, secondaryPageDuration); // Switch back to the primary page after secondaryPageDuration
+
+  //   return () => clearInterval(intervalId);
+  // }, []);
+
+  // useEffect(() => {
+  //   const primaryIntervalId = setInterval(() => {
+  //     setCurrentPage(getRandomSecondaryPage()); // Switch to a random secondary page after primaryPageDuration
+  //   }, primaryPageDuration);
+  //   // Clear the interval when the component is unmounted
+  //   return () => clearInterval(primaryIntervalId);
+  // }, []);
   
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -88,18 +121,26 @@ const App = () => {
         }
       });
     }, secondaryPageDuration); // Switch back to the primary page after secondaryPageDuration
-
+  
     return () => clearInterval(intervalId);
-  }, []);
-
+  }, [primaryPage, secondaryPageDuration]);
+  
   useEffect(() => {
     const primaryIntervalId = setInterval(() => {
-      setCurrentPage(getRandomSecondaryPage()); // Switch to a random secondary page after primaryPageDuration
+      setCurrentPage(primaryPage); // Always switch back to the primary page after primaryPageDuration
     }, primaryPageDuration);
     // Clear the interval when the component is unmounted
     return () => clearInterval(primaryIntervalId);
-  }, []);
+  }, [primaryPage, primaryPageDuration]);
   
+  useEffect(() => {
+    handlePageChange(); // Call handlePageChange after rendering the new page
+    // tweak delay below so bg image loads prior to change
+    const timeoutId = setTimeout(() => {
+      setForceChange(false);
+    }, 0);
+    return () => clearTimeout(timeoutId); 
+  }, [currentPage]); // Trigger whenever currentPage changes
   
   const renderPage = () => {
     if (!weatherData) {
@@ -140,7 +181,9 @@ const App = () => {
   
 
   return (
-<div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
+    <div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
+      <ImagePrefetch urls={globalconfig.bgImages} />
+      {/* <ImageRotator forceChange={forceChange} /> */}
       <ImageRotator />
       <div className="flex-grow">
         <CSSTransition
