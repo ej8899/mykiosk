@@ -91,14 +91,14 @@ const Countdown = () => {
 
             <div className="flex flex-col items-center justify-center mt-8">
               <div className="flex justify-center items-end pb-2">
-                <span className="text-9xl font-extrabold text-white inline-block w-40 pb-2 z-10">
+                <span className="text-9xl font-extrabold text-white inline-block w-40 pb-0 z-10">
                   {/* {timeLeft.days.toString().padStart(2, '0')} */}
                   {timeLeft.days.toString()}
                 </span>
-                <span className={`text-6xl font-bold text-${globalconfig.accentColor}-500 ml-16 mt-10`}>DAYS</span>
+                <span className={`text-6xl font-bold text-${globalconfig.accentColor}-500 `}>DAYS</span>
               </div>
 
-              <div className="flex flex-row -mt-4">
+              <div className="flex flex-row -mt-2">
                 <div className="text-6xl font-bold text-white mx-4">
                   {timeLeft.hours.toString().padStart(2, '0')}h
                 </div>
