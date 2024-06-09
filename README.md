@@ -36,3 +36,30 @@ Designed, Developed & Deployed by <a href="https://www.erniejohnson.ca/" title="
 /etc/xdg/lxsessions/LXDEpi/autostart
 /media/user/Untitled -> /var/www/html
 1920x1080
+
+
+
+# updating the kiosk:
+
+on RPI:
+sudo chown -R zzz: /var/www/  (replace zzz with the username on your RPI)
+
+
+ON DEV machine:
+npm run build
+cd ./dist/
+
+sudo scp *.* zzz@rpi:/var/www/html/assets
+sudo scp -r index.html zzz@rpi:/var/www/html
+
+(plus copy any new graphics/images if required)
+
+on RPI:
+clear cache:
+rm -rf ~/.cache/chromium
+
+reset permissions:
+sudo chown -R www-data:www-data /var/www/html
+
+restart:
+sudo reboot
