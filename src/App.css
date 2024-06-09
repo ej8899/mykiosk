@@ -1,3 +1,8 @@
+body {
+  overflow: hidden;
+}
+
+
 .carousel {
   height: 500px;
 }
@@ -57,4 +62,18 @@
 
 .fade-out {
   opacity: 0; /* Make the page transparent to fade it out */
+}
+
+
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.1); /* Slightly zoomed in */
+  }
+  100% {
+    transform: scale(1); /* Back to normal size */
+  }
 }

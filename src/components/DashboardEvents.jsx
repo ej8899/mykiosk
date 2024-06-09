@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { globalconfig } from '../config.js';
 
 import { Card } from 'flowbite-react';
@@ -26,9 +26,9 @@ const UpcomingEvents = ({ upcomingEvents }) => {
     };
 
     // Start the scrolling animation after a delay
-    const scrollDelay = 10000; // 5 seconds delay
+    const scrollDelay = 8000; // 8 second delay
     const scrollTimeout = setTimeout(() => {
-      const scrollInterval = setInterval(scrollEvents, 80); // Adjust the interval as needed
+      const scrollInterval = setInterval(scrollEvents, 100); // Adjust the interval for scroll speed (system dependent though)
 
       // Clean up the interval on component unmount
       return () => clearInterval(scrollInterval);

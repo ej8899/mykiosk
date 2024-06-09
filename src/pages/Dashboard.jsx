@@ -10,27 +10,7 @@ import { Card } from 'flowbite-react';
 import { globalconfig } from '../config.js'
 import UpcomingEvents from '../components/DashboardEvents.jsx';
 
-function formatEventDate(eventDate) {
-  const today = new Date();
-  const targetDate = new Date(eventDate);
 
-  const difference = targetDate - today;
-
-  if (difference < 0) {
-    return 'Event has passed';
-  } else if (difference === 0) {
-    return 'Now';
-  } else {
-    const daysRemaining = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-    if (daysRemaining === 0) {
-      const hoursRemaining = Math.floor(difference / (1000 * 60 * 60));
-      return `Hours Remaining: ${hoursRemaining}`;
-    } else {
-      return `Days Remaining: ${daysRemaining}`;
-    }
-  }
-}
 
 
 const Dashboard = ({weatherData}) => {
@@ -59,6 +39,7 @@ const Dashboard = ({weatherData}) => {
 
 
   return (
+    
     <div className="flex flex-col h-screen w-screen bg-black bg-opacity-65 min-h-screen">
       <NavBar />
       <div className="dark flex flex-row flex-grow  mr-8 ml-8 mt-4">

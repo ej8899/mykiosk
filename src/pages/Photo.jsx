@@ -23,9 +23,9 @@ export default function Component() {
     <img
       alt="Photo of {randomImage.photoDescription}"
       className="aspect-square object-cover rounded-lg"
-      height={800}
+      height={720}
       src={randomImage.photoURL}
-      width={900}
+      width={820}
     />
     <div className="p-4 items-center justify-center flex flex-col">
       <h3 className="font-semibold text-4xl text-slate-700">{randomImage.photoDescription}</h3>
@@ -38,9 +38,9 @@ export default function Component() {
       <img
         alt={`Photo of ${randomImage.photoDescription}`}
         className="aspect-square object-cover rounded-lg"
-        height={800}
+        height={720}
         src={randomImage.photoURL}
-        width={900}
+        width={820}
       />
       <div className="p-4 items-center justify-center flex flex-col">
         <h3 className="font-semibold text-4xl text-slate-700">{randomImage.photoDescription}</h3>

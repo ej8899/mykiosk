@@ -183,8 +183,8 @@ const App = () => {
   return (
     <div className="kiosk-app overflow-hidden overflow-y-hidden flex flex-col min-h-screen">
       <ImagePrefetch urls={globalconfig.bgImages} />
-      {/* <ImageRotator forceChange={forceChange} /> */}
-      <ImageRotator />
+      <ImageRotator forceChange={forceChange} />
+      {/* <ImageRotator /> */}
       <div className="flex-grow">
         <CSSTransition
           in={true}
