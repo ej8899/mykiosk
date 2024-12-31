@@ -40,13 +40,20 @@ const UpcomingEvents = ({ upcomingEvents }) => {
 
 
 
-  function formatEventDate(eventDate) {
+  function formatEventDate(eventDate,considerOverdue) {
     const today = new Date();
     const targetDate = new Date(eventDate);
-  
+    let setPrefix = '';
     const difference = targetDate - today;
-  
-    if (difference < 0) {
+    // console.log("consider overdue:",considerOverdue)
+
+    if(considerOverdue === 'yes'){
+      setPrefix = ' ';
+      // console.log("Overdue")
+      //return `Days Remaining -${difference}`
+    }
+
+    if (difference < 0 && !setPrefix) {
       return 'Milestone Achieved';
     } else if (difference === 0) {
       return 'Now';
@@ -55,9 +62,9 @@ const UpcomingEvents = ({ upcomingEvents }) => {
   
       if (daysRemaining === 0) {
         const hoursRemaining = Math.floor(difference / (1000 * 60 * 60));
-        return `Hours Remaining: ${hoursRemaining}`;
+        return `Hours Remaining: ${setPrefix}${hoursRemaining}`;
       } else {
-        return `Days Remaining: ${daysRemaining}`;
+        return `Days Remaining: ${setPrefix}${daysRemaining}`;
       }
     }
   }
@@ -71,7 +78,7 @@ const UpcomingEvents = ({ upcomingEvents }) => {
             <Card key={index+33} className={`border-0 border-l-8 border-${globalconfig.accentColor}-500 dark:border-${globalconfig.accentColor}-400 bg-gradient-to-r from-slate-800 via-slate-900 to-slate-900 opacity-80`}>
             <div className="flex flex-col gap-2">
               <h2 className="text-3xl font-bold text-white">{event.title}</h2>
-              <h3 className="text-2xl font-bold text-slate-400">{formatEventDate(event.date)}</h3>
+              <h3 className="text-2xl font-bold text-slate-400">{formatEventDate(event.date,event.overdue)}</h3>
               <p className="text-xl text-gray-400">{event.details}</p>
             </div>
             </Card>

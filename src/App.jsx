@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 
 
-
-
 import Page1 from './pages/Dashboard.jsx';
 import Page2 from './pages/Countdown.jsx';
 import Page3 from './pages/Weather';
@@ -24,6 +22,7 @@ const logger = window.initializeLogger();
 const App = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [forceChange, setForceChange] = useState(false); // Track if a background image change is forced
+  const [mergedConfig, setMergedConfig] = useState(globalconfig);
 
   const DASHBOARD = 1;
   const COUNTDOWN = 2;
@@ -33,7 +32,9 @@ const App = () => {
   const ANNOUNCEMENTS = 6;
   const PEOPLE = 7;
 
-  const forcedPage = globalconfig.lockToPage;
+  // const urlforcedPage = parseInt(searchParams.get('page'), 10); // Get the 'page' query parameter from the URL
+  // const forcedPage = globalconfig.lockToPage;
+  // const forcedPage = parseInt(searchParams.get('page'), 10) || globalconfig.lockToPage || 0;
   // const forcedPage = PEOPLE;
 
   const primaryPage = DASHBOARD;
@@ -42,6 +43,52 @@ const App = () => {
   const primaryPageDuration = globalconfig.primaryPageTime * 60 * 1000;
   const [weatherData, setWeatherData] = useState(null);
 
+  // Retrieve forced page from the URL manually
+  const getQueryParam = (key) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(key);
+  };
+
+  const urlForcedPage = parseInt(getQueryParam('page'), 10); // Get 'page' query parameter
+  const uid = getQueryParam('uid'); // Get 'uid' query parameter or use default.json
+
+  const forcedPage =
+  (urlForcedPage > 0 && urlForcedPage <= 7)
+    ? urlForcedPage
+    : (globalconfig.lockToPage > 0 && globalconfig.lockToPage <= 7)
+      ? globalconfig.lockToPage
+      : undefined; // Default to undefined if no valid forcedPage is set
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      if (!uid) {
+        logger.warn('No UID provided. Using default configuration.');
+        return;
+      }
+
+      try {
+        const response = await fetch(`https://erniejohnson.ca/clients/kiosk-bna/configs/${uid}.json`); // Adjust path as necessary
+        if (!response.ok) {
+          throw new Error(`Failed to fetch configuration for UID: ${uid}`);
+        }
+        const externalConfig = await response.json();
+
+        // Merge external config with globalconfig (keeping globalconfig untouched)
+        // Overwrite globalconfig with externalConfig
+        Object.assign(globalconfig, externalConfig);
+
+
+        logger.info(`Configuration successfully loaded for UID: ${uid}`);
+      } catch (error) {
+        logger.error(`Error loading configuration for UID: ${uid}`);
+        console.error(error);
+        // Use default config if fetch fails
+        setMergedConfig(globalconfig);
+      }
+    };
+
+    fetchConfig();
+  }, [uid]);
 
   useEffect(() => {  
 
@@ -74,6 +121,18 @@ const App = () => {
 
     return () => clearInterval(intervalId);
   }, []);
+
+
+  // useEffect(() => {
+  //   if (!forcedPage) {
+  //     const intervalId = setInterval(() => {
+  //       setCurrentPage((prevPage) =>
+  //         prevPage === 1 ? getRandomSecondaryPage() : 1
+  //       );
+  //     }, secondaryPageDuration);
+  //     return () => clearInterval(intervalId);
+  //   }
+  // }, [forcedPage]);
 
 
   const handlePageChange = () => {
@@ -157,7 +216,7 @@ const App = () => {
   
     switch (selectedPage) {
       case DASHBOARD:
-        return <Page1 weatherData={weatherData.current} />;
+        return <Page1 config={mergedConfig} weatherData={weatherData.current} />;
       case COUNTDOWN:
         return <Page2 />;
       case WEATHER:
